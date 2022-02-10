@@ -1,4 +1,5 @@
 import logo from './logo.svg';
+import PropTypes from 'prop-types';
 import './App.css';
 import ReviewItems from './Reviews';
 
@@ -32,11 +33,11 @@ function FotoProduk(){
 }
 
 function CheckDiscount(props){
-  const { isDiscount } = props;
+  const { isDiscount, discount } = props;
 
   if(isDiscount == "yes"){
     return (
-      <p>Diskon 50% Off</p>
+      <p>Diskon {discount}% Off</p>
     );
   } else if(isDiscount == "coming") {
     return (
@@ -54,7 +55,7 @@ function ProdukInfo(props){
   const price = 7400000;
   const benefits = ["Tidak kusut terkena air", "Bahan lebih halus", "Tidak gerah"];
   const listBenefit = benefits.map((itemBenefit) =>
-    <li>{itemBenefit}</li>
+    <li key={itemBenefit}>{itemBenefit}</li>
   );
 
   return (
@@ -63,7 +64,7 @@ function ProdukInfo(props){
           <p className="Cate">{category}</p>
           <h1 className="Title">{name}</h1>
           <p className="Price">IDR {price}</p>
-          <CheckDiscount isDiscount={isDiscount}/> 
+          <CheckDiscount isDiscount={isDiscount} discount={50} /> 
           <p className="Info">
             Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
           </p>
@@ -79,5 +80,9 @@ function ProdukInfo(props){
 function TambahCart(e){
   return alert(`Membeli Produk ${e}`);
 }
+
+CheckDiscount.propTypes = {
+  discount: PropTypes.number.isRequired
+};
 
 export default App;
