@@ -16,12 +16,52 @@ function App() {
         {a + b}
       <br/>
        <FotoProduk />
-       <ProdukInfo category="SHOES" name="Pinky Swag" isDiscount="yes"/>
+       <ProdukInfo category="SHOES" name="Pinky Swag" isDiscount="yes" />
+       <ReviewItems />
     </div>
   );
 }
 
-function FotoProduk() {
+function ReviewItems(){
+  const users = [
+    {
+      "id": 1,
+      "avatar": "avatar.jpg",
+      "name": "Fikri",
+      "review": "Harga boleh murah, tapi kualitas bukan murahan (emot api)"
+    },
+    {
+      "id": 2,
+      "avatar": "avatar.jpg",
+      "name": "Khairul",
+      "review": "Harga boleh murah, tapi kualitas bukan murahan (emot api)"
+    },
+    {
+      "id": 3,
+      "avatar": "avatar.jpg",
+      "name": "Shaleh",
+      "review": "Harga boleh murah, tapi kualitas bukan murahan (emot api)"
+    }
+  ];
+  const listReview = users.map((itemReview) =>
+    <div className="Item">
+      <img src={itemReview.avatar} />
+      <div className="User">
+        <p className="Name">{itemReview.name}</p>
+        <p>{itemReview.review})</p>
+        </div>
+      </div>
+  );
+
+  return (
+    <div className="Review-box">
+      <h2>Reviews</h2>
+        {listReview}
+      </div>
+  );
+}
+
+function FotoProduk(){
   return (
       <div className="Foto">
         <img src="shoes.jpg" />
@@ -51,8 +91,8 @@ function ProdukInfo(props){
   const { category, name, isDiscount } = props;
   const price = 7400000;
   const benefits = ["Tidak kusut terkena air", "Bahan lebih halus", "Tidak gerah"];
-  const listBenefits = benefits.map((benefit) =>
-    <li>{benefit}</li>
+  const listBenefit = benefits.map((itemBenefit) =>
+    <li>{itemBenefit}</li>
   );
 
   return (
@@ -66,7 +106,7 @@ function ProdukInfo(props){
             Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
           </p>
           <ul>
-            {listBenefits}
+            {listBenefit}
           </ul>
           <a onClick={(e) => TambahCart(name, e)} href="#">Add to Cart</a>
         </div>
