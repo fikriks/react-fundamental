@@ -16,7 +16,7 @@ function App() {
         {a + b}
       <br/>
        <FotoProduk />
-       <ProdukInfo category="SHOES" name="Pinky Swag"/>
+       <ProdukInfo category="SHOES" name="Pinky Swag" isDiscount="yes"/>
     </div>
   );
 }
@@ -29,8 +29,26 @@ function FotoProduk() {
   );
 }
 
+function CheckDiscount(props){
+  const { isDiscount } = props;
+
+  if(isDiscount == "yes"){
+    return (
+      <p>Diskon 50% Off</p>
+    );
+  } else if(isDiscount == "coming") {
+    return (
+      <p>Akan ada diskon</p>
+    );
+  } else {
+    return (
+      <p>Belum ada diskon</p>
+    );
+  }
+}
+
 function ProdukInfo(props){
-  const { category, name } = props;
+  const { category, name, isDiscount } = props;
   const price = 7400000;
 
   return (
@@ -39,6 +57,7 @@ function ProdukInfo(props){
           <p className="Cate">{category}</p>
           <h1 className="Title">{name}</h1>
           <p className="Price">IDR {price}</p>
+          <CheckDiscount isDiscount={isDiscount}/> 
           <p className="Info">
             Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
           </p>
