@@ -1,5 +1,6 @@
 import logo from './logo.svg';
 import './App.css';
+import ReviewItems from './Reviews';
 
 function App() {
   const hello = "Hello World";
@@ -19,45 +20,6 @@ function App() {
        <ProdukInfo category="SHOES" name="Pinky Swag" isDiscount="yes" />
        <ReviewItems />
     </div>
-  );
-}
-
-function ReviewItems(){
-  const users = [
-    {
-      "id": 1,
-      "avatar": "avatar.jpg",
-      "name": "Fikri",
-      "review": "Harga boleh murah, tapi kualitas bukan murahan (emot api)"
-    },
-    {
-      "id": 2,
-      "avatar": "avatar.jpg",
-      "name": "Khairul",
-      "review": "Harga boleh murah, tapi kualitas bukan murahan (emot api)"
-    },
-    {
-      "id": 3,
-      "avatar": "avatar.jpg",
-      "name": "Shaleh",
-      "review": "Harga boleh murah, tapi kualitas bukan murahan (emot api)"
-    }
-  ];
-  const listReview = users.map((itemReview) =>
-    <div className="Item">
-      <img src={itemReview.avatar} />
-      <div className="User">
-        <p className="Name">{itemReview.name}</p>
-        <p>{itemReview.review})</p>
-        </div>
-      </div>
-  );
-
-  return (
-    <div className="Review-box">
-      <h2>Reviews</h2>
-        {listReview}
-      </div>
   );
 }
 
